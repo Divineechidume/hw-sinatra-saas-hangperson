@@ -29,7 +29,7 @@ class HangpersonGame
   end
 
   def guess(letter)
-    if not letter =~ /[A-Za-z]/ or letter == "" or letter == nil
+    if not letter =~ /[A-Za-z]+/ or letter == "" or letter == nil
       raise ArgumentError.new("")
     end
     if letter.upcase == letter
@@ -40,11 +40,13 @@ class HangpersonGame
         return false
       end
       @guesses += letter
+      return true
     else
       if wrong_guesses.include? letter
         return false
       end
       @wrong_guesses += letter
+      return true
     end
   end
 
