@@ -80,7 +80,7 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
-    emp = @game.check_win_or_lose
+    temp = @game.check_win_or_lose
     if temp == :win
     	erb :win # You may change/remove this line
     else
@@ -90,6 +90,7 @@ class HangpersonApp < Sinatra::Base
   
   get '/lose' do
     ### YOUR CODE HERE ###
+    temp = @game.check_win_or_lose
     if temp == :lose
     	erb :lose # You may change/remove this line
     else
