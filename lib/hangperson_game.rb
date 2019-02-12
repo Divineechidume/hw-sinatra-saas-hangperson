@@ -29,7 +29,7 @@ class HangpersonGame
   end
 
   def guess(letter)
-    if not letter =~ /[A-Za-z]/ or letter == ""
+    if not letter =~ /[A-Za-z]/ or letter == "" or letter == nil
       raise ArgumentError.new("")
     end
     if letter.upcase == letter
