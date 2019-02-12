@@ -1,3 +1,4 @@
+#Peer programing with Gloia Elise Tumushabe
 require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/hangperson_game.rb'
@@ -40,8 +41,24 @@ class HangpersonApp < Sinatra::Base
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
     letter = params[:guess].to_s[0]
+    if !@game.guess(letter)
+    	if not letter =~ /[A-Za-z]/
+    		flash[:message] = "Invalid guess."
+    	else
+    		flash[:message] = "You have already used that letter."
+    	end
+    end
+
+    temp = @game.check_win_or_lose
+    if temp == :win
+    	redirect '/win'
+    elsif temp == :lose
+    	redirect '/lose'
+    else
+    	redirect '/show'
+    end
     ### YOUR CODE HERE ###
-    redirect '/show'
+    #redirect '/show'
   end
   
   # Everytime a guess is made, we should eventually end up at this route.

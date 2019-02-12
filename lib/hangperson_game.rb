@@ -1,3 +1,4 @@
+#Peer Programing with Gloria Tumushabe
 class HangpersonGame
   attr_reader :word, :guesses, :wrong_guesses
 
